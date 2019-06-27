@@ -5,6 +5,9 @@ var assert = require('assert');
 var { body, check, validationResult } = require('express-validator/check');
 var { sanitizeBody } = require('express-validator/filter');
 
+const mongoHost = 'mongodb';
+const mongoPort = 27017;
+
 var mongoHelper = require('../helpers/mongo');
 
 var requestRules = {
@@ -15,7 +18,7 @@ var requestRules = {
 }
 
 
-var mongoUrl = "mongodb://localhost:27017";
+var mongoUrl = "mongodb://" + mongoHost + ":" + mongoPort;
 var dbName = "articlesdb";
 var collectionName = "articles"
 

@@ -1,0 +1,22 @@
+version: '2'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:4
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-data:/data/db
+
+  img_mongo_node_api:
+    image: img_mongo_node_api
+    container_name: img_mongo_node_api
+    build: .
+    volumes:
+      - ./api-app:/app
+    ports:
+      - 3001:3000
+    links:
+      - mongodb
+
